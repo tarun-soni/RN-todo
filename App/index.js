@@ -1,4 +1,4 @@
 import React from 'react'
-import Options from './screens/Options'
+import TodoScreen from './screens/TodoScreen'
 
-export default () => <Options />
+export default () => <TodoScreen />
