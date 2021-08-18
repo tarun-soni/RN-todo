@@ -1,17 +1,11 @@
-import React, { Fragment, useState } from 'react'
-import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  ScrollView,
-  TouchableOpacity
-} from 'react-native'
+import React, { useState } from 'react'
+import { StyleSheet, Text, View, SafeAreaView, FlatList } from 'react-native'
 
 import colors from '../constants/colors'
 import { TodoItem } from '../components/TodoItem'
 import { TodoInput } from '../components/TodoInput'
 import { DATA } from '../data/TODO_DATA'
+import { generateRandomID } from '../utils/generateID'
 
 const styles = StyleSheet.create({
   todo_wrapper: {
@@ -35,7 +29,7 @@ const styles = StyleSheet.create({
   }
 })
 
-export default TodoScreen = () => {
+const TodoFlatList = () => {
   const [todos, setTodos] = useState(DATA)
   const [inputValue, setInputValue] = useState('test')
 
@@ -51,22 +45,25 @@ export default TodoScreen = () => {
     setTodos(filteredTodos)
   }
 
+  const renderItem = ({ item }) => (
+    <View>
+      <TodoItem
+        title={item.title}
+        onDeletePress={() => onDeletePress(item.id)}
+      />
+      <RowSeparator />
+    </View>
+  )
+
   return (
     <SafeAreaView style={styles.todo_wrapper}>
-      <Text style={styles.header_title}>List Of Todos</Text>
+      <Text style={styles.header_title}>Flatlist todos </Text>
 
-      <ScrollView>
-        {todos.map((todo, index) => (
-          <Fragment key={index}>
-            <TodoItem
-              title={todo.title}
-              onDeletePress={onDeletePress}
-              index={index}
-            />
-            <RowSeparator />
-          </Fragment>
-        ))}
-      </ScrollView>
+      <FlatList
+        data={todos}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+      />
 
       <TodoInput
         onAddPress={onAddPress}
@@ -76,5 +73,7 @@ export default TodoScreen = () => {
     </SafeAreaView>
   )
 }
+
+export default TodoFlatList
 
 export const RowSeparator = () => <View style={styles.separator} />
