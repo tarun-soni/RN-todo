@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import colors from '../constants/colors'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 
@@ -10,12 +10,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
-    backgroundColor: colors.white
+    backgroundColor: colors.white,
   },
   title: {
     color: colors.text,
-    fontSize: 24
-  }
+    fontSize: 24,
+  },
 })
 export const TodoItem = ({ title, onPress, onDeletePress, index }) => {
   return (

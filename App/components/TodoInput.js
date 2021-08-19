@@ -5,7 +5,7 @@ import {
   TextInput,
   TouchableHighlight,
   TouchableOpacity,
-  View
+  View,
 } from 'react-native'
 import colors from '../constants/colors'
 
@@ -15,27 +15,27 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     marginHorizontal: 20,
     flexDirection: 'row',
-    borderRadius: 5
+    borderRadius: 5,
   },
   add_todo_button: {
     paddingVertical: 12,
     paddingHorizontal: 24,
     margin: 8,
     backgroundColor: colors.white,
-    borderRadius: 5
+    borderRadius: 5,
   },
   button_text: {
     fontSize: 18,
     color: colors.blue,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   todo_input: {
     flex: 1,
     padding: 10,
     fontSize: 16,
     color: colors.white,
-    marginLeft: 10
-  }
+    marginLeft: 10,
+  },
 })
 
 export const TodoInput = ({ onAddPress, inputValue, setInputValue }) => {
