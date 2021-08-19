@@ -6,7 +6,7 @@ export default App = () => {
   return (
     <>
       <TodoScreen />
-      <TodoFlatList />
+      {/* <TodoFlatList /> */}
     </>
   )
 }

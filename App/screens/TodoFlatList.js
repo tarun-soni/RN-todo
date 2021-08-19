@@ -9,7 +9,7 @@ import { generateRandomID } from '../utils/generateID'
 
 const styles = StyleSheet.create({
   todo_wrapper: {
-    paddingVertical: 48,
+    paddingTop: 48,
     paddingHorizontal: 24,
     flex: 1
   },
@@ -45,24 +45,21 @@ const TodoFlatList = () => {
     setTodos(filteredTodos)
   }
 
-  const renderItem = ({ item }) => (
-    <View>
-      <TodoItem
-        title={item.title}
-        onDeletePress={() => onDeletePress(item.id)}
-      />
-      <RowSeparator />
-    </View>
-  )
-
   return (
     <SafeAreaView style={styles.todo_wrapper}>
       <Text style={styles.header_title}>Flatlist todos </Text>
 
       <FlatList
         data={todos}
-        renderItem={renderItem}
+        renderItem={({ item }) => (
+          <TodoItem
+            title={item.title}
+            onDeletePress={() => onDeletePress(item.id)}
+          />
+        )}
         keyExtractor={(item) => item.id}
+        // ListEmptyComponent={() => <Text>No items</Text>}
+        ListFooterComponent={() => <Text>No items</Text>}
       />
 
       <TodoInput
