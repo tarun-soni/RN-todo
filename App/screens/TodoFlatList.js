@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
 const TodoFlatList = () => {
   const [todos, setTodos] = useState(DATA)
   const [inputValue, setInputValue] = useState('test')
-
+  const [isRefreshing, setIsRefreshing] = useState(false)
   const onAddPress = () => {
     setTodos((todos) => [
       ...todos,
@@ -43,6 +43,15 @@ const TodoFlatList = () => {
   const onDeletePress = (id) => {
     const filteredTodos = todos.filter((t) => t.id !== id)
     setTodos(filteredTodos)
+  }
+  const onDonePress = (id) => {
+    todos.forEach((todo) => {
+      if (todo.id === id) {
+        todo.doneStatus = true
+      }
+    })
+
+    console.log(`todos`, todos)
   }
 
   return (
@@ -55,10 +64,16 @@ const TodoFlatList = () => {
           <TodoItem
             title={item.title}
             onDeletePress={() => onDeletePress(item.id)}
+            doneStatus={item.doneStatus}
+            onDonePress={() => onDonePress(item.id)}
           />
         )}
         keyExtractor={(item) => item.id}
         ListEmptyComponent={<NoTodos />}
+        onRefresh={() => {
+          setIsRefreshing(true)
+        }}
+        refreshing={isRefreshing}
       />
 
       <TodoInput
