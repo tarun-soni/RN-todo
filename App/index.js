@@ -1,5 +1,6 @@
 import React from 'react'
 import { StatusBar } from 'react-native'
+import Navigation from './config/Navigation'
 import colors from './constants/colors'
 import ImageScreen from './screens/ImageScreen'
 import TodoFlatList from './screens/TodoFlatList'
@@ -9,8 +10,10 @@ export default App = () => {
   return (
     <>
       {/* <TodoS creen /> */}
-      <TodoFlatList />
+      {/* <TodoFlatList /> */}
       {/* <ImageScreen /> */}
+
+      <Navigation />
     </>
   )
 }

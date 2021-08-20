@@ -6,8 +6,11 @@ import {
   StyleSheet,
   Image,
   Dimensions,
+  TouchableOpacity,
+  SafeAreaView,
 } from 'react-native'
 import colors from '../constants/colors'
+import { Entypo } from '@expo/vector-icons'
 
 const screen = Dimensions.get('window')
 
@@ -16,13 +19,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: colors.blue,
   },
   logoContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 20,
   },
   logoBackground: {
     width: screen.width / 0.4,
@@ -33,11 +34,21 @@ const styles = StyleSheet.create({
     width: screen.width * 0.2,
     height: screen.width * 0.2,
   },
+  header: {
+    alignItems: 'flex-end',
+    marginHorizontal: 30,
+  },
 })
-export default ImageScreen = () => {
+
+export default ImageScreen = ({ navigation }) => {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor={colors.blue} />
+      <SafeAreaView style={styles.header}>
+        <TouchableOpacity onPress={() => navigation.push('TodoScreen')}>
+          <Entypo name="cog" size={32} color={colors.lightBlue} />
+        </TouchableOpacity>
+      </SafeAreaView>
       <View style={styles.logoContainer}>
         <Image
           style={[styles.logoBackground]}
@@ -50,6 +61,6 @@ export default ImageScreen = () => {
           resizeMode="contain"
         />
       </View>
-    </View>
+    </SafeAreaView>
   )
 }
