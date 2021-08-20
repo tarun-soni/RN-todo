@@ -12,6 +12,7 @@ import {
 } from 'react-native'
 import colors from '../constants/colors'
 import { Entypo } from '@expo/vector-icons'
+import CustomFlatButton from '../components/CustomFlatButton'
 
 const screen = Dimensions.get('window')
 
@@ -76,9 +77,14 @@ export default ImageScreen = ({ navigation }) => {
       </View>
 
       <SafeAreaView style={styles.start_button}>
-        <Button
+        {/* <Button
           title={'start'}
           color="#4252fa"
+          onPress={() => navigation.navigate('TodoFlatList')}
+        /> */}
+
+        <CustomFlatButton
+          text={"Let's Start"}
           onPress={() => navigation.navigate('TodoFlatList')}
         />
       </SafeAreaView>
