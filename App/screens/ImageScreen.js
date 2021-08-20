@@ -45,7 +45,10 @@ export default ImageScreen = ({ navigation }) => {
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor={colors.blue} />
       <SafeAreaView style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.push('TodoScreen')}>
+        {/* <TouchableOpacity onPress={() => navigation.push('TodoFlatList')}>
+          <Entypo name="cog" size={32} color={colors.lightBlue} />
+        </TouchableOpacity> */}
+        <TouchableOpacity onPress={() => navigation.navigate('TodoFlatList')}>
           <Entypo name="cog" size={32} color={colors.lightBlue} />
         </TouchableOpacity>
       </SafeAreaView>

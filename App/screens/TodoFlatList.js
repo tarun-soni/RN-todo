@@ -1,5 +1,12 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, SafeAreaView, FlatList } from 'react-native'
+import {
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  FlatList,
+  TouchableOpacity,
+} from 'react-native'
 
 import { TodoItem } from '../components/TodoItem'
 import { TodoInput } from '../components/TodoInput'
@@ -7,15 +14,22 @@ import { DATA } from '../data/TODO_DATA'
 import { generateRandomID } from '../utils/generateID'
 import NoTodos from '../components/NoTodos'
 import colors from '../constants/colors'
+import { AntDesign } from '@expo/vector-icons'
+
 const styles = StyleSheet.create({
   todo_wrapper: {
     paddingTop: 48,
     paddingHorizontal: 24,
     flex: 1,
   },
+  header_wrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   header_title: {
     paddingVertical: 8,
     fontSize: 36,
+    paddingLeft: 20,
     fontWeight: 'bold',
   },
   title: {
@@ -29,7 +43,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const TodoFlatList = () => {
+const TodoFlatList = ({ navigation }) => {
   const [todos, setTodos] = useState(DATA)
   const [inputValue, setInputValue] = useState('test')
   const [isRefreshing, setIsRefreshing] = useState(false)
@@ -50,13 +64,16 @@ const TodoFlatList = () => {
         todo.doneStatus = true
       }
     })
-
-    console.log(`todos`, todos)
   }
 
   return (
     <SafeAreaView style={styles.todo_wrapper}>
-      <Text style={styles.header_title}>Flatlist todos </Text>
+      <View style={styles.header_wrapper}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <AntDesign name="left" size={24} color="black" />
+        </TouchableOpacity>
+        <Text style={styles.header_title}>Flatlist todos</Text>
+      </View>
 
       <FlatList
         data={todos}

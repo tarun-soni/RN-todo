@@ -46,7 +46,11 @@ export default Navigation = () => {
           component={ImageScreen}
           options={{ headerShown: false }}
         />
-        <MainStack.Screen name="TodoScreen" component={TodoFlatList} />
+        <MainStack.Screen
+          name="TodoFlatList"
+          component={TodoFlatList}
+          options={{ title: 'Todos' }}
+        />
       </MainStack.Navigator>
     </NavigationContainer>
   )
