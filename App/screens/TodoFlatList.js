@@ -72,7 +72,7 @@ const TodoFlatList = ({ navigation }) => {
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <AntDesign name="left" size={24} color="black" />
         </TouchableOpacity>
-        <Text style={styles.header_title}>Flatlist todos</Text>
+        <Text style={styles.header_title}>Flatlist ToDos</Text>
       </View>
 
       <FlatList

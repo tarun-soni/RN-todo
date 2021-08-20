@@ -6,7 +6,7 @@ import {
   SafeAreaView,
   ScrollView,
   TouchableOpacity,
-  RefreshControl
+  RefreshControl,
 } from 'react-native'
 
 import colors from '../constants/colors'
@@ -19,28 +19,28 @@ const styles = StyleSheet.create({
   todo_wrapper: {
     paddingVertical: 48,
     paddingHorizontal: 24,
-    flex: 1
+    flex: 1,
   },
   header_title: {
     paddingVertical: 8,
     fontSize: 36,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   title: {
     color: colors.text,
-    fontSize: 32
+    fontSize: 32,
   },
   separator: {
     backgroundColor: colors.border,
     height: StyleSheet.hairlineWidth,
-    marginLeft: 20
+    marginLeft: 20,
   },
 
   scrollView: {
     backgroundColor: colors.lightBlue,
     paddingHorizontal: 10,
-    paddingVertical: 10
-  }
+    paddingVertical: 10,
+  },
 })
 
 export default TodoScreen = () => {
@@ -51,7 +51,7 @@ export default TodoScreen = () => {
   const onAddPress = () => {
     setTodos((todos) => [
       ...todos,
-      { id: generateRandomID(), title: inputValue }
+      { id: generateRandomID(), title: inputValue },
     ])
   }
 
