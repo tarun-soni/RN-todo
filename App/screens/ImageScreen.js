@@ -8,6 +8,7 @@ import {
   Dimensions,
   TouchableOpacity,
   SafeAreaView,
+  Button,
 } from 'react-native'
 import colors from '../constants/colors'
 import { Entypo } from '@expo/vector-icons'
@@ -38,20 +39,29 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     marginHorizontal: 30,
   },
+  start_button: {
+    alignSelf: 'center',
+    width: 140,
+    marginVertical: 30,
+    borderRadius: 8,
+    paddingVertical: 14,
+    paddingHorizontal: 10,
+    fontSize: 16,
+  },
 })
 
 export default ImageScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor={colors.blue} />
-      <SafeAreaView style={styles.header}>
-        {/* <TouchableOpacity onPress={() => navigation.push('TodoFlatList')}>
+      {/*  <SafeAreaView style={styles.header}>
+         <TouchableOpacity onPress={() => navigation.push('TodoFlatList')}>
           <Entypo name="cog" size={32} color={colors.lightBlue} />
-        </TouchableOpacity> */}
+        </TouchableOpacity> 
         <TouchableOpacity onPress={() => navigation.navigate('TodoFlatList')}>
           <Entypo name="cog" size={32} color={colors.lightBlue} />
-        </TouchableOpacity>
-      </SafeAreaView>
+        </TouchableOpacity> 
+      </SafeAreaView>*/}
       <View style={styles.logoContainer}>
         <Image
           style={[styles.logoBackground]}
@@ -64,6 +74,14 @@ export default ImageScreen = ({ navigation }) => {
           resizeMode="contain"
         />
       </View>
+
+      <SafeAreaView style={styles.start_button}>
+        <Button
+          title={'start'}
+          color="#4252fa"
+          onPress={() => navigation.navigate('TodoFlatList')}
+        />
+      </SafeAreaView>
     </SafeAreaView>
   )
 }
